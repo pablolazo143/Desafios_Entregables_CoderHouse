@@ -1,0 +1,102 @@
+:root{
+    --fuentePrincipal: 'Tomorrow';
+    --fuenteSecundaria: 'Open Sans';
+    --colorPrincipal: ;
+    --colorSecundario: ;
+}
+/* Globales */
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+body{
+    font-family: var(--fuentePrincipal);
+}
+p{
+    font-family: var(--fuenteSecundaria);
+    font-size: 1.6rem;
+}
+h1{
+    font-size: 2.8rem;
+    font-weight: bold;
+}
+h2{
+    font-size: 2.4rem;
+    font-weight: bold;
+}
+h1,h2{
+    text-align: center;
+}
+.contenedor{
+    max-width: 120rem;
+    margin: 0 auto;
+}
+.no-margin{
+    margin: 0;
+}
+.boton{
+    text-decoration: none;
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 4rem auto;
+    padding: 1rem;
+    background-color: rgb(211, 210, 210);
+    border-radius: 2px;
+    display: block;
+    width:fit-content;
+    text-align: center;
+    color: black;
+}
+.boton:hover{
+    transition: all 0.3ms ease-out;
+    background-color: rgb(147, 147, 147);
+}
+
+/* Main */
+.header{
+    background-image: url(../img/Dados_1.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    padding: 2rem 2rem 4rem 2rem;
+}
+.header__navegacion{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 6rem;
+}
+.header__navegacion--enlace{
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    color: black;
+}
+.header__navegacion--enlace:hover{
+    transition: all 0.3ms ease-out;
+    text-decoration: underline;
+}
+.section{
+    margin-top: 2rem;
+}
+.section__organizador{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.section__img{
+    margin-top: 2rem;
+    width: 50rem;
+}
+.section__img img{
+    width: 100%;
+}
+
+/* Footer */
+.footer{
+    text-align: center;
+    margin-top: 2rem;
+    font-weight: bold;
+}
