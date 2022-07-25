@@ -1,21 +1,24 @@
-console.log('Bienvenido a PIG - Por el momento es un juego para 2 personas');
+console.log('Bienvenido a PIG');
 // Variables
 let dado;
-const numeroJugadores = 2;
+const numeroJugadores = parseInt(prompt('Ingresar la cantidad de Jugadores (Número): '));
 const puntosFinal = parseInt(prompt('Ingrese la cantidad de puntos que quiere definir como meta (Número): '));
 
 class jugador{
     constructor(nombre){
         this.nombre = nombre;
         this.puntos = 0;
-        this.inicio = 0;
         this.seguirJugada = true;
         this.salir = false;
     }
 };
 
-let jugador1 = new jugador(prompt('Nombre Jugador 1: '));
-let jugador2 = new jugador(prompt('Nombre Jugador 2: '));
+// Creamos array de jugadores
+const jugadores = [];
+for (let i = 0; i < numeroJugadores; i++) {
+    jugadores.push(new jugador(prompt(`Nombre Jugador ${i+1}: `)));
+    
+};
 
 // Funciones
 function arrojarDado(){
@@ -24,8 +27,10 @@ function arrojarDado(){
     return Math.floor(Math.random() * ((maxValue - minValue + 1)) + minValue);
 };
 
-function primeroEnJugar(jugador){
-    jugador.inicio = arrojarDado();
+function allTrue(jugadores){
+    for (let i = 0; i < jugadores.length; i++) {
+        jugadores[i].seguirJugada = true;  
+    };  
 };
 
 function jugada(jugador,puntosInicio){
@@ -61,55 +66,39 @@ function jugada(jugador,puntosInicio){
 };
 
 // JUEGO
+let = finalDelJuego = false;
+let i = 0;
+while(finalDelJuego == false){
+    if (i >= jugadores.length) {
+        i = 0;
+    }
 
-// Determinar que jugador es primero. 
-// Esto se podría hacer de manera automátizada haciendo un array de objetos jugadores y recorriendolo
-// Por el momento se realizará de manera manual
-console.log('Se determinará de manera aleatoria que jugador empieza tirando los dados');
-primeroEnJugar(jugador1);
-primeroEnJugar(jugador2);
-
-if (jugador1.inicio>jugador2.inicio){
-    while(jugador1.puntos <= puntosFinal || jugador2.puntos <= puntosFinal ){
-        if (jugador1.seguirJugada == true){
-            console.log(`Es el turno del jugador ${jugador1.nombre}`);
-            jugador1 = jugada(jugador1, jugador1.puntos);
-            jugador2.seguirJugada = true;
-        }else{
-           console.log(`Es el turno del jugador ${jugador2.nombre}`);
-           jugador2 = jugada(jugador2, jugador2.puntos);
-           jugador1.seguirJugada = true;
-        }
-        if(jugador1.puntos >= puntosFinal){
-            break;
-        }else if(jugador2.puntos >= puntosFinal){
+    if (jugadores[i].seguirJugada == true){
+        console.log(`Es el turno del jugador ${jugadores[i].nombre}`);
+        jugadores[i] = jugada(jugadores[i], jugadores[i].puntos);
+        allTrue(jugadores);
+        if(jugadores[i].puntos >= puntosFinal){
+            finalDelJuego = true;
             break;
         }
-        if(jugador1.salir == true || jugador2.salir ==true){
+        if(jugadores[i].salir == true){
             console.log('Saliendo del juego...');
             break;
         }
-    }
-}else{
-    while(jugador1.puntos <= puntosFinal || jugador2.puntos <= puntosFinal ){
-        if (jugador2.seguirJugada == true){
-            console.log(`Es el turno del jugador ${jugador2.nombre}`);
-            jugador2 = jugada(jugador2, jugador2.puntos);
-            jugador1.seguirJugada = true;
-        }else{
-            console.log(`Es el turno del jugador ${jugador1.nombre}`);
-            jugador1 = jugada(jugador1, jugador1.puntos);
-            jugador2.seguirJugada = true;
-        }
-        if(jugador1.puntos >= puntosFinal){
-            break;
-        }else if(jugador2.puntos >= puntosFinal){
+        i++;
+    }else{
+       console.log(`Es el turno del jugador ${jugadores[i].nombre}`);
+       jugadores[i] = jugada(jugadores[i], jugadores[i].puntos);
+       allTrue(jugadores);
+       if(jugadores[i].puntos >= puntosFinal){
+            finalDelJuego = true;
             break;
         }
-        if(jugador1.salir == true || jugador2.salir ==true){
+        if(jugadores[i].salir == true){
             console.log('Saliendo del juego...');
             break;
         }
+       i++;
     }
-};
+}
 
