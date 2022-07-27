@@ -102,3 +102,28 @@ while(finalDelJuego == false){
     }
 }
 
+// Tabla de puntajes
+let tablaPuntaje = jugadores;
+
+
+tablaPuntaje.sort(function (a, b) {
+    if (a.puntos < b.puntos) {
+      return 1;
+    }
+    if (a.puntos > b.puntos) {
+      return -1;
+    }
+    // a.puntos = b.puntos
+    return 0;
+  });
+
+console.log(tablaPuntaje);
+
+let tablaDOM = document.querySelector('#contenedor_tabla');
+tablaDOM.innerHTML = null;
+
+for (const jugador of jugadores){
+    let lista = document.createElement('li');
+    lista.innerHTML = `Jugador: ${jugador.nombre} Puntos: ${jugador.puntos}`;
+    tablaDOM.appendChild(lista);
+};
