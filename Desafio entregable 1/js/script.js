@@ -125,5 +125,6 @@ tablaDOM.innerHTML = null;
 for (const jugador of jugadores){
     let lista = document.createElement('li');
     lista.innerHTML = `Jugador: ${jugador.nombre} Puntos: ${jugador.puntos}`;
+    lista.className = 'tablaPuntuacion';
     tablaDOM.appendChild(lista);
 };

@@ -94,6 +94,15 @@ h1,h2{
     width: 100%;
 }
 
+.tablaPuntuacion{
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: var(--fuentePrincipal);
+    line-height: 2;
+    list-style: decimal;
+}
+
+
 /* Footer */
 .footer{
     text-align: center;
