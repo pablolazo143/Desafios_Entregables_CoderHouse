@@ -51,6 +51,7 @@ h1,h2{
     color: black;
 }
 .boton:hover{
+    cursor: pointer;
     transition: all 0.3ms ease-out;
     background-color: rgb(147, 147, 147);
 }
@@ -77,6 +78,12 @@ h1,h2{
 .header__navegacion--enlace:hover{
     transition: all 0.3ms ease-out;
     text-decoration: underline;
+}
+.contenedorBotones{
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
 }
 .section{
     margin-top: 2rem;
