@@ -49,6 +49,8 @@ h1,h2{
     width:fit-content;
     text-align: center;
     color: black;
+    border: 2px solid black;
+    border-radius: 5px;
 }
 .boton:hover{
     cursor: pointer;
@@ -62,12 +64,13 @@ h1,h2{
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    padding: 2rem 2rem 4rem 2rem;
+    padding: 1rem;
+    max-height: 320px;
 }
 .header__navegacion{
     display: flex;
     justify-content: space-around;
-    margin-bottom: 6rem;
+    margin-bottom: 2rem;
 }
 .header__navegacion--enlace{
     text-decoration: none;
@@ -79,14 +82,57 @@ h1,h2{
     transition: all 0.3ms ease-out;
     text-decoration: underline;
 }
+.reiniciar{
+    border: 2px solid black;
+    border-radius: 3px;
+    padding: 3px;
+}
+.formulario{
+    max-width: 800px;
+    margin: 3rem auto;
+}
+.formulario fieldset{
+    margin: 0;
+    padding: 0;
+    height: 170px;
+    border: none;
+}
+.legend_form{
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.nombre_form{
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0;
+    font-size: 1.4rem;
+}
+.enviar_datos{
+    display: flex;
+    justify-content: space-evenly;
+}
 .contenedorBotones{
-    max-width: 500px;
+    width: 500px;
+    height: fit-content;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding: 0;  
+}
+.contenedor_section_footer{
+    margin: 0;
+    padding: 0;
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,178,109,0.29939308487066707) 100%); 
 }
 .section{
-    margin-top: 2rem;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-evenly;
 }
 .section__organizador{
     display: flex;
@@ -94,8 +140,8 @@ h1,h2{
     align-items: center;
 }
 .section__img{
-    margin-top: 2rem;
-    width: 50rem;
+    margin-top: 0rem;
+    max-width: 7rem;
 }
 .section__img img{
     width: 100%;
@@ -108,11 +154,14 @@ h1,h2{
     line-height: 2;
     list-style: decimal;
 }
+.tablaPuntuacion2{
+    height: 200px;
+}
 
 
 /* Footer */
 .footer{
     text-align: center;
-    margin-top: 2rem;
+    padding: 2rem;
     font-weight: bold;
 }

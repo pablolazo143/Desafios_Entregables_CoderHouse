@@ -17,34 +17,51 @@
     <main class="header">
         <div class="contenedor">
             <div class="header__navegacion">
-                <a class="header__navegacion--enlace" href="index.html">Inicio</a>
-                <a class="header__navegacion--enlace" href="proximamente.html">Más juegos</a>
+                <a class="header__navegacion--enlace reiniciar" href="index.html">REINICIAR</a>
+                <a class="header__navegacion--enlace" id="instrucciones" href="#">Instrucciones</a>
                 <a class="header__navegacion--enlace" href="https://www.linkedin.com/feed/">Contacto</a>
             </div>
             <h1 class="no-margin">Bienvenido a PIG un juego de dados para toda la familia</h1>
-            <div class="contenedorBotones">
-                <button id="iniciaJuego" class="boton" >Iniciar</button>
-                <a href="index.html" class="boton">Reiniciar</a>
-            </div>
+            <form action="" class="no-margin formulario">
+                <fieldset>
+                    <legend class="legend_form">Agregar Jugadores</legend>
+                    <div class="campo">
+                        <input class="nombre_form" type="text" placeholder="Nombre" id="nombre_form">
+                    </div>
+                    <div class="enviar_datos">
+                        <input type="button" value="Agregar" class="boton" id="agregar_jugador">
+                        <input id="iniciaJuego" class="boton" value="Iniciar" type="button">
+                    </div>
+                </fieldset>
+            </form>
         </div>   
     </main>
-    <section class="contenedor section">
-        <div id="contenedor_tabla" class="section__organizador">
-            <h2 class="no-margin">Instrucciones</h2>
-            <p class="no-margin ">
-                Se decide que jugador debe empezar. El jugador que empieza tira los dados. Si saca 2, 3, 4, 5, 6 empieza a acumular puntos y puede decidir si sigue jugando o pasa su turno.
-                Si vuelve a sacar un 2, 3, 4, 5 o 6, agrega ese número a su puntuacion anterior. 
-                Si saca un 1, no gana puntuación e inmediatamente pasa el dado al siguiente jugador, perdiendo todos los puntos acumulados en ese turno. 
-                Es importante tomar la decision más acertada en cada momento, despues de cada tirada si no hemos sacado un uno elegiremos si seguir tirando o acumular esos puntos.
-            </p>
-            <div class="section__img">
-                <img src="img/Dados_2.jpg" alt="Dados">            
+    <div class="contenedor_section_footer">
+        <section class="contenedor section">
+            <div class="tabla_jugadores" id="tabla_jugadores">
+                <h2>Jugadores</h2>
             </div>
-        </div>
-    </section>
-    <footer class="footer">
-        <p>Desafío CoderHouse - Pablo Lazo</p>
-    </footer>
-    <script src="js/script.js"></script>
+            <div id="contenedor_tabla" class="section__organizador">
+                <h2 class="no-margin">Que empiece el Juego</h2>
+                <div class="contenedorBotones">
+                    <input type="button" id="tirarDado" class="boton" value="Tirar">
+                    <input type="button" id="pasarJuego" class="boton" value="Pasar">
+                    <input type="button" id="terminarJuego" class="boton" value="Terminar">
+                    <!-- <a href="index.html" class="boton">Reiniciar</a> -->
+                </div>
+                <div class="section__img" id="contenedor_dado">
+                    <img src="img/dice_1.jpg" alt="Dados" id="dado_imagen">            
+                </div>
+            </div>
+            <div class="tabla_jugadores" id="tabla_puntos">
+                <h2>Puntos</h2>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Desafío CoderHouse - Pablo Lazo</p>
+        </footer>
+    </div>
+    <script src="js/script_v2.js"></script>
 </body>
 </html>

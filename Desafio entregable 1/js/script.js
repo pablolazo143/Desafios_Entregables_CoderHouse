@@ -1,43 +1,86 @@
 console.log('Bienvenido a PIG');
 
-let boton = document.querySelector('#iniciaJuego');
+// VARIABLES
+let tirar = document.querySelector('#iniciaJuego');
+let instrucciones = document.querySelector('#instrucciones');
+let dadoImagen = document.querySelector('#dado_imagen');
+let nombreJugador = document.querySelector('#nombre_form');
+let agregarJugador = document.querySelector('#agregar_jugador');
+let tablaJugadores = document.querySelector('#tabla_jugadores');
+// Creamos array de jugadores
+const jugadores = [];
 
-// Eventos
-boton.addEventListener('click',function(e){
+// DEFINICIÓN DE LA CLASE JUGADOR
+class jugador{
+    constructor(nombre){
+        this.nombre = nombre;
+        this.puntos = 0;
+        this.seguirJugada = true;
+        this.salir = false;
+    }
+};
+
+// FUNCIONES
+function arrojarDado(){
+    const maxValue = 6;
+    const minValue = 1;
+    let valorDado = Math.floor(Math.random() * ((maxValue - minValue + 1)) + minValue);
+    dadoImagen.src = `/img/dice_${valorDado}.jpg`;
+    return valorDado;
+};
+
+function allTrue(jugadores){
+    for (let i = 0; i < jugadores.length; i++) {
+        jugadores[i].seguirJugada = true;  
+    };  
+};
+
+function local_storage(clave, valor){
+    localStorage.setItem(clave, valor);
+}
+
+function agregarJugadores(){
+    jugadores.push(new jugador(nombreJugador.value));
+    let listaJugadores = document.createElement('li');
+    listaJugadores.innerHTML = nombreJugador.value;
+    tablaJugadores.appendChild(listaJugadores);
+    tablaJugadores.className = 'tablaPuntuacion2'
+    listaJugadores.className = 'tablaPuntuacion';
+    nombreJugador.value = '';
+}
+
+function jugar(jugador){
+    this.preventDefault;
+
+}
+
+function pasarTurno(jugador){
+    this.preventDefault;
+}
+
+function terminarJuego(jugador){
+    this.preventDefault;
+}
+
+// EVENTOS
+// Evento para mostrar instrucciones de juego
+instrucciones.addEventListener('click', () => {
+    alert('Se decide que jugador debe empezar. El jugador empieza tira los dados. Si saca 2, 3, 4, 5, 6 acumula puntos y puede decidir si sigue jugando o pasa su turno. Si saca un 1, no gana puntuación e inmediatamente pasa el dado al siguiente jugador, perdiendo todos los puntos acumulados en ese turno. GANA EL JUGADOR QUE ALCANZA 50 PUNTOS')
+})
+
+// Evento para agregar jugador
+agregarJugador.addEventListener('click', agregarJugadores);
+
+// Inicio Juego
+tirar.addEventListener('click',function(e){
     e.preventDefault;
 
-    const numeroJugadores = parseInt(prompt('Ingresar la cantidad de Jugadores (Número): '));
-    const puntosFinal = parseInt(prompt('Ingrese la cantidad de puntos que quiere definir como meta (Número): '));
+    // Guardo jugadores en local Storage
+    local_storage('nombreJugadores', JSON.stringify(jugadores));
+    // Puntuación a alcanzar
+    const puntosFinal = 50;
 
-    class jugador{
-        constructor(nombre){
-            this.nombre = nombre;
-            this.puntos = 0;
-            this.seguirJugada = true;
-            this.salir = false;
-        }
-    };
-
-    // Creamos array de jugadores
-    const jugadores = [];
-    for (let i = 0; i < numeroJugadores; i++) {
-        jugadores.push(new jugador(prompt(`Nombre Jugador ${i+1}: `)));
-        
-    };
-
-    // Funciones
-    function arrojarDado(){
-        const maxValue = 6;
-        const minValue = 1;
-        return Math.floor(Math.random() * ((maxValue - minValue + 1)) + minValue);
-    };
-
-    function allTrue(jugadores){
-        for (let i = 0; i < jugadores.length; i++) {
-            jugadores[i].seguirJugada = true;  
-        };  
-    };
-
+    // JUEGO
     function jugada(jugador,puntosInicio){
         let dado;
         let decision;
@@ -70,7 +113,6 @@ boton.addEventListener('click',function(e){
         return jugador;
     };
 
-    // JUEGO
     let = finalDelJuego = false;
     let i = 0;
     while(finalDelJuego == false){
@@ -110,7 +152,6 @@ boton.addEventListener('click',function(e){
     // Tabla de puntajes
     let tablaPuntaje = jugadores;
 
-
     tablaPuntaje.sort(function (a, b) {
         if (a.puntos < b.puntos) {
         return 1;
@@ -126,6 +167,9 @@ boton.addEventListener('click',function(e){
 
     let tablaDOM = document.querySelector('#contenedor_tabla');
     tablaDOM.innerHTML = null;
+    let h2_tablaDOM = document.createElement('h2');
+    h2_tablaDOM.innerHTML = 'Tabla de posiciones';
+    tablaDOM.appendChild(h2_tablaDOM);
 
     for (const jugador of jugadores){
         let lista = document.createElement('li');
