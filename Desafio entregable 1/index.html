@@ -30,6 +30,7 @@
                     </div>
                     <div class="enviar_datos">
                         <input type="button" value="Agregar" class="boton" id="agregar_jugador">
+                        <input type="button" value="Repetir PJs" class="boton" id="repetir_jugador">
                         <input id="iniciaJuego" class="boton" value="Iniciar" type="button">
                     </div>
                 </fieldset>
@@ -42,15 +43,17 @@
                 <h2>Jugadores</h2>
             </div>
             <div id="contenedor_tabla" class="section__organizador">
-                <h2 class="no-margin">Que empiece el Juego</h2>
-                <div class="contenedorBotones">
-                    <input type="button" id="tirarDado" class="boton" value="Tirar">
-                    <input type="button" id="pasarJuego" class="boton" value="Pasar">
-                    <input type="button" id="terminarJuego" class="boton" value="Terminar">
-                    <!-- <a href="index.html" class="boton">Reiniciar</a> -->
-                </div>
-                <div class="section__img" id="contenedor_dado">
-                    <img src="img/dice_1.jpg" alt="Dados" id="dado_imagen">            
+                <div class="inicio_juego" id="inicio_juego">
+                    <h2 class="no-margin">Que empiece el Juego</h2>
+                    <div class="contenedorBotones">
+                        <input type="button" id="tirarDado" class="boton" value="Tirar">
+                        <input type="button" id="pasarJuego" class="boton" value="Pasar">
+                        <input type="button" id="terminarJuego" class="boton" value="Terminar">
+                        <!-- <a href="index.html" class="boton">Reiniciar</a> -->
+                    </div>
+                    <div class="section__img" id="contenedor_dado">
+                        <img class="img_dado" src="img/dice_1.jpg" alt="Dados" id="dado_imagen">            
+                    </div>
                 </div>
             </div>
             <div class="tabla_jugadores" id="tabla_puntos">

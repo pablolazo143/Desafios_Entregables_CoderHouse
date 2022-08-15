@@ -21,6 +21,8 @@ let puntosInicio = [];
 const puntosFinal = 50; // Puntuación a alcanzar
 const jugadores = []; // Creamos array de jugadores
 let tabla_Puntaje = []; // Tabla de puntajes
+let tablaInicioJuego = document.querySelector('#inicio_juego');
+let repetir_pj = document.querySelector('#repetir_jugador');
 
 // DEFINICIÓN DE LA CLASE JUGADOR
 class jugador{
@@ -64,6 +66,20 @@ function agregarJugadores(){
     tablaPuntos.className = 'tablaPuntuacion2'
     listaPuntos.className = 'tablaPuntuacion';
     nombreJugador.value = '';
+}
+
+function repetirJugadores(nombreJugador){
+    jugadores.push(new jugador(nombreJugador));
+    let listaJugadores = document.createElement('li');
+    listaJugadores.innerHTML = nombreJugador;
+    tablaJugadores.appendChild(listaJugadores);
+    tablaJugadores.className = 'tablaPuntuacion2'
+    listaJugadores.className = 'tablaPuntuacion';
+    let listaPuntos = document.createElement('li');
+    listaPuntos.innerHTML = `${nombreJugador} ${jugadores[index].puntos} puntos`;
+    tablaPuntos.appendChild(listaPuntos);
+    tablaPuntos.className = 'tablaPuntuacion2'
+    listaPuntos.className = 'tablaPuntuacion';
 }
 
 function imprimirTabla(){
@@ -134,7 +150,7 @@ iniciarJuego.addEventListener('click', (e)=>{
     for(i = 0; i < jugadores.length; i++){
         puntosInicio[i] = jugadores[i].puntos;
     }
-    
+    tablaInicioJuego.className = 'visible';
 });
 
 // Evento tirar dado
@@ -164,4 +180,27 @@ tirarDado.addEventListener('click', function jugada(){
         } 
     }
 });
+
+// Evento repetir Personajes
+let repetir_personaje = [];
+let repetir_switch = false;
+repetir_pj.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // Extraer de localStorage
+    repetir_personaje = JSON.parse(localStorage.getItem("nombreJugadores")) || null;
+    repetir_personaje ? repetir_switch = true : repetir_switch = false ; 
+    if (repetir_switch) {
+        repetir_personaje.forEach(element => {
+            repetirJugadores(element.nombre);
+        });
+        for(i = 0; i < jugadores.length; i++){
+            puntosInicio[i] = jugadores[i].puntos;
+        }
+        iniciar_juego = true;
+        tablaInicioJuego.className = 'visible';
+    }else{
+        alert('no hay pj en base de datos');
+    }
+} )
 
