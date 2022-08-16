@@ -112,7 +112,13 @@ function agregarPuntaje(index){
 // EVENTOS
 // Evento para mostrar instrucciones de juego
 instrucciones.addEventListener('click', () => {
-    alert('Se decide que jugador debe empezar. El jugador empieza tira los dados. Si saca 2, 3, 4, 5, 6 acumula puntos y puede decidir si sigue jugando o pasa su turno. Si saca un 1, no gana puntuación e inmediatamente pasa el dado al siguiente jugador, perdiendo todos los puntos acumulados en ese turno. GANA EL JUGADOR QUE ALCANZA 50 PUNTOS')
+    // alert('Se decide que jugador debe empezar. El jugador empieza tira los dados. Si saca 2, 3, 4, 5, 6 acumula puntos y puede decidir si sigue jugando o pasa su turno. Si saca un 1, no gana puntuación e inmediatamente pasa el dado al siguiente jugador, perdiendo todos los puntos acumulados en ese turno. GANA EL JUGADOR QUE ALCANZA 50 PUNTOS')
+    Swal.fire({
+        title: 'Instrucciones',
+        text: 'Se decide que jugador debe empezar. El jugador empieza tira los dados. Si saca 2, 3, 4, 5, 6 acumula puntos y puede decidir si sigue jugando o pasa su turno. Si saca un 1, no gana puntuación e inmediatamente pasa el dado al siguiente jugador, perdiendo todos los puntos acumulados en ese turno. GANA EL JUGADOR QUE ALCANZA 50 PUNTOS',
+        icon: 'info',
+        // confirmButtonText: ''
+    })
 })
 
 // Evento para agregar jugador
@@ -123,7 +129,13 @@ pasar_juego.addEventListener('click', ()=>{
     console.log('click en pasar turno')
     if (iniciar_juego == true){
         jugadores[index].seguirJugada = false;
-        alert(`Cambio de turno, el jugador ${jugadores[index].nombre} pasó el turno`);
+        // alert(`Cambio de turno, el jugador ${jugadores[index].nombre} pasó el turno`);
+        Toastify({
+            text: `Cambio de turno, el jugador ${jugadores[index].nombre} pasó el turno`,
+            duration: 2000,
+            gravity: 'bottom',
+            position: 'right'
+        }).showToast();
         puntosInicio[index] = jugadores[index].puntos;
         index++;
         if(index >= jugadores.length){
@@ -172,7 +184,13 @@ tirarDado.addEventListener('click', function jugada(){
             if(index >= jugadores.length){
                 index = 0;
             }
-            alert(`Cambio de turno, obtuviste un 1`);
+            // alert(`Cambio de turno, obtuviste un 1`);
+            Toastify({
+                text: `Cambio de turno, obtuviste un 1`,
+                duration: 2000,
+                gravity: 'bottom',
+                position: 'right'
+            }).showToast();
         }
         if(index < jugadores.length && jugadores[index].puntos >= puntosFinal){
             puntosInicio[index] = jugadores[index].puntos;
@@ -200,7 +218,13 @@ repetir_pj.addEventListener('click', (e) => {
         iniciar_juego = true;
         tablaInicioJuego.className = 'visible';
     }else{
-        alert('no hay pj en base de datos');
+        // alert('no hay pj en base de datos');
+        Swal.fire({
+            title: 'Warning',
+            text: 'No hay jugadores guardados en la base de datos',
+            icon: 'error',
+            // confirmButtonText: ''
+        })
     }
 } )
 
