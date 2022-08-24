@@ -23,6 +23,7 @@ const jugadores = []; // Creamos array de jugadores
 let tabla_Puntaje = []; // Tabla de puntajes
 let tablaInicioJuego = document.querySelector('#inicio_juego');
 let repetir_pj = document.querySelector('#repetir_jugador');
+let excusaSeguirJugando = document.querySelector('#excusaSeguir');
 
 // DEFINICIÓN DE LA CLASE JUGADOR
 class jugador{
@@ -115,7 +116,7 @@ instrucciones.addEventListener('click', () => {
     // alert('Se decide que jugador debe empezar. El jugador empieza tira los dados. Si saca 2, 3, 4, 5, 6 acumula puntos y puede decidir si sigue jugando o pasa su turno. Si saca un 1, no gana puntuación e inmediatamente pasa el dado al siguiente jugador, perdiendo todos los puntos acumulados en ese turno. GANA EL JUGADOR QUE ALCANZA 50 PUNTOS')
     Swal.fire({
         title: 'Instrucciones',
-        text: 'Se decide que jugador debe empezar. El jugador empieza tira los dados. Si saca 2, 3, 4, 5, 6 acumula puntos y puede decidir si sigue jugando o pasa su turno. Si saca un 1, no gana puntuación e inmediatamente pasa el dado al siguiente jugador, perdiendo todos los puntos acumulados en ese turno. GANA EL JUGADOR QUE ALCANZA 50 PUNTOS',
+        text: 'Se decide que jugador debe empezar. El jugador empieza tira los dados. Si saca 2, 3, 4, 5, 6 acumula puntos y puede decidir si sigue jugando o pasa su turno. Si saca un 1, no gana puntuación e inmediatamente pasa el dado al siguiente jugador, perdiendo todos los puntos acumulados en ese turno. GANA EL JUGADOR QUE ALCANZA 50 PUNTOS. Puede generar una EXCUSA para seguir jugando.',
         icon: 'info',
         // confirmButtonText: ''
     })
@@ -228,3 +229,20 @@ repetir_pj.addEventListener('click', (e) => {
     }
 } )
 
+
+// Evento pedir excusa para seguir jugando
+excusaSeguirJugando.addEventListener('click',(e)=>{
+    e.preventDefault();
+    const URL ='https://excuser.herokuapp.com/v1/excuse/party';
+    fetch(URL)
+    .then(resp => resp.json())
+    .then(data => {
+        const excusaTexto = data[0].excuse;
+        Swal.fire({
+            title: 'Excusa',
+            text: `${excusaTexto}`,
+            icon: 'info',
+        });
+    });
+
+})
