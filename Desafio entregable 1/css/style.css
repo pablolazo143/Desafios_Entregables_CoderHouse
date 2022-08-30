@@ -3,6 +3,15 @@
     --fuenteSecundaria: 'Open Sans';
     --colorPrincipal: ;
     --colorSecundario: ;
+    --color-first          : #65587f;
+    --color-second         : #f18867;
+    --color-third          : #e85f99;
+    --color-forth          : #50bda1;
+    --block-width          :   300px;
+    --block-height         :   270px;
+    --border-width         : .625rem;
+    --border-radius-outer  :     8px;
+    --border-radius-inner  : calc(var(--border-radius-outer) / 2);
 }
 /* Globales */
 html {
@@ -14,6 +23,8 @@ html {
   }
 body{
     font-family: var(--fuentePrincipal);
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,178,109,0.29939308487066707) 100%); 
 }
 p{
     font-family: var(--fuenteSecundaria);
@@ -62,9 +73,19 @@ h1,h2{
     display: block;
 }
 
+.white{
+    background-color: white;
+    animation: o-rotate-360 linear 8s infinite;
+}
+@keyframes o-rotate-360 {
+    0% { transform: rotate(0) }
+  
+    100% { transform: rotate(360deg) }
+  }
+
 /* Main */
 .header{
-    background-image: url(../img/Dados_1.png);
+    background-image: url(../img/Dados_1_edit.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -106,6 +127,7 @@ h1,h2{
     font-size: 1.6rem;
     font-weight: bold;
     text-transform: uppercase;
+    margin-bottom: 1rem;
 }
 .nombre_form{
     width: 100%;
@@ -114,6 +136,7 @@ h1,h2{
     border-radius: 0.5rem;
     margin-bottom: 0;
     font-size: 1.4rem;
+    text-transform: uppercase;
 }
 .enviar_datos{
     display: flex;
@@ -130,8 +153,7 @@ h1,h2{
 .contenedor_section_footer{
     margin: 0;
     padding: 0;
-    background: rgb(255,255,255);
-    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,178,109,0.29939308487066707) 100%); 
+    max-height: 100vh;
 }
 .section{
     padding-top: 2rem;
