@@ -304,6 +304,9 @@ repetir_pj.addEventListener('click', (e) => {
     if (repetir_switch) {
         repetir_personaje.forEach(element => {
             repetirJugadores(element.nombre);
+            agregarJugador.disabled = true;
+            iniciarJuego.disabled = true;
+            repetir_pj.disabled = true;
         });
         for(i = 0; i < jugadores.length; i++){
             puntosInicio[i] = jugadores[i].puntos;
@@ -324,9 +327,6 @@ repetir_pj.addEventListener('click', (e) => {
             icon: 'error',
         });
     };
-    agregarJugador.disabled = true;
-    iniciarJuego.disabled = true;
-    repetir_pj.disabled = true;
 });
 
 
